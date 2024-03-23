@@ -65,9 +65,17 @@ async function update(req, res, next) {
 }
 
 async function remove(req, res, next) {
+    const id = req.params.id;
     try {
-        res.json(await programmingLanguages.remove(req.params.id));
-    } catch (err) {
+        db.deleteUser(id, (error, users) => {
+            if (error) {
+                console.error(`Error while deleting data`, error.message);
+                return next(error);
+            }
+            res.status(200).send(`User deleted with ID: ${id}`)
+        });
+    }
+    catch (err) {
         console.error(`Error while deleting data`, err.message);
         next(err);
     }
