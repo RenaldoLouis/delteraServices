@@ -1,11 +1,6 @@
+const dbConfig = require('../configs/db.config');
 const Pool = require('pg').Pool
-const pool = new Pool({
-    user: 'renaldolouis',
-    host: 'localhost',
-    database: 'delterademo',
-    password: 'password',
-    port: 5432,
-})
+const pool = new Pool(dbConfig)
 
 const getUsers = (callback) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
@@ -16,8 +11,7 @@ const getUsers = (callback) => {
     });
 };
 
-const getUserById = (params, callback) => {
-    const { id } = params;
+const getUserById = (id, callback) => {
 
     pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
         if (error) {
