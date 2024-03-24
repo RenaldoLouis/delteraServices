@@ -1,16 +1,20 @@
+const { user } = require('../configs/db.config.js');
 const db = require('../services/queries')
+const helper = require('../utils/helper.js');
 
 async function get(req, res, next) {
     try {
         db.getUsers((error, users) => {
             if (error) {
-                console.error(`Error while getting data`, error.message);
                 return next(error);
             }
-            res.status(200).json(users);
+            if (users.length > 0) {
+                res.status(200).json(users);
+            } else {
+                res.status(201).json(users);
+            }
         });
     } catch (err) {
-        console.error(`Error while getting data`, err.message);
         next(err);
     }
 }
@@ -20,13 +24,15 @@ async function getById(req, res, next) {
     try {
         db.getUserById(id, (error, users) => {
             if (error) {
-                console.error(`Error while getting data`, error.message);
                 return next(error);
             }
-            res.status(200).json(users);
+            if (users.length > 0) {
+                res.status(200).json(users);
+            } else {
+                res.status(201).json(users);
+            }
         });
     } catch (err) {
-        console.error(`Error while getting data`, err.message);
         next(err);
     }
 }
@@ -36,13 +42,11 @@ async function create(req, res, next) {
     try {
         db.createUser(body, (error, users) => {
             if (error) {
-                console.error(`Error while create user`, error.message);
                 return next(error);
             }
-            res.status(200).send(`User created Succesfully`)
+            res.status(201).send(users)
         });
     } catch (err) {
-        console.error(`Error while create user`, err.message);
         next(err);
     }
 }
@@ -53,13 +57,11 @@ async function update(req, res, next) {
     try {
         db.updateUser(id, body, (error, users) => {
             if (error) {
-                console.error(`Error while updating data`, error.message);
                 return next(error);
             }
-            res.status(200).json(users);
+            res.status(201).json(users);
         });
     } catch (err) {
-        console.error(`Error while updating data`, err.message);
         next(err);
     }
 }
@@ -69,14 +71,12 @@ async function remove(req, res, next) {
     try {
         db.deleteUser(id, (error, users) => {
             if (error) {
-                console.error(`Error while deleting data`, error.message);
                 return next(error);
             }
-            res.status(200).send(`User deleted with ID: ${id}`)
+            res.status(200).json(users);
         });
     }
     catch (err) {
-        console.error(`Error while deleting data`, err.message);
         next(err);
     }
 }

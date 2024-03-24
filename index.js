@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const ErrorHandler = require("./src/middlewares/ErrorHandler.js")
 var cors = require('cors')
 const port = 3000
 const route = require('./src/routes/route')
@@ -14,6 +15,8 @@ app.use(
 )
 
 app.use('/delteraDemo', route)
+
+app.use(ErrorHandler)
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
