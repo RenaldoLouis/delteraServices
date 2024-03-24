@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "driver": "pg",
+        "user": "renaldolouis",
+        "password": "password",
+        "host": "localhost",
+        "database": "delterademo",
+        "port": "5432"
+    }
+}
