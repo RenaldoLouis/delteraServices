@@ -1,18 +1,4 @@
-# delteraServices
-
-requirement:
-
-- node v14.17+ installed
-- postgres 14.8+ installed
-
-step:
-
-- npm install -g db-migrate
-- npm install -g db-migrate-pg
-- npm i
-- to run node index.js
-
-# delteraServices
+# Deltera Services
 
 ## Introduction
 
