@@ -1,4 +1,5 @@
 const dbConfig = require('../configs/db.config');
+const { getCreateUserResponseDTO } = require('../models/userDTO');
 const Pool = require('pg').Pool
 const pool = new Pool(dbConfig)
 
@@ -29,7 +30,7 @@ const createUser = (params, callback) => {
             return callback(error);
         }
         if (results.rowCount === 1 && results.rows[0].id) {
-            return callback(null, results.rows);
+            return callback(null, getCreateUserResponseDTO(results.rows[0]));
         } else {
             return callback(new Error('Failed to create user'));
         }

@@ -9,7 +9,17 @@ function emptyOrRows(rows) {
     return rows;
 }
 
+function getPaginationInfo(page, limit, count) {
+    return {
+        page: +page,
+        limit: +limit,
+        totalCount: count,
+        totalPages: Math.ceil(count / limit),
+    };
+};
+
 module.exports = {
     getOffset,
-    emptyOrRows
+    emptyOrRows,
+    getPaginationInfo
 }
