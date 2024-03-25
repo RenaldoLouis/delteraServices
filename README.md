@@ -2,6 +2,52 @@
 
 requirement:
 
-- npm installed
-- postgres installed
--
+- node v14.17+ installed
+- postgres 14.8+ installed
+
+step:
+
+- npm install -g db-migrate
+- npm install -g db-migrate-pg
+- npm i
+- to run node index.js
+
+# delteraServices
+
+## Introduction
+
+This project is a Node.js application that provides various services for the Deltera platform.
+
+## Requirements
+
+Before running the application, ensure you have the following prerequisites installed on your system:
+
+- [Node.js](https://nodejs.org/) v14.17+ installed
+- [PostgreSQL](https://www.postgresql.org/) 14.8+ installed
+
+## Installation
+
+Follow these steps to install and set up the project:
+
+1. Install db-migrate globally:
+
+   ```bash
+    npm install -g db-migrate
+   ```
+
+2. Install db-migrate-pg globally:
+
+   ```bash
+    npm install -g db-migrate-pg
+   ```
+
+3. Install project dependencies:
+   ```bash
+    npm install
+   ```
+
+## Usage
+
+```bash
+  node index.js
+```
