@@ -16,7 +16,7 @@ const Pool = require('pg').Pool
 const db = {
   user: 'renaldolouis',
   host: 'localhost',
-  database: 'delterademo',
+  database: 'delterrademo',
   password: 'password',
   port: 5432,
 };

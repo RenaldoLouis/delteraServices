@@ -14,7 +14,7 @@ app.use(
     })
 )
 
-app.use('/delteraDemo', route)
+app.use('/delterrademo', route)
 
 app.use(ErrorHandler)
 

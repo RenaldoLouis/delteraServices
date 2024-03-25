@@ -1,86 +1,49 @@
 
 const db = require('../repositories/UserRepository.js');
+const DatabaseUtil = require('../utils/DatabaseUtil.js');
 
-function getUsers() {
+async function getUsers(req, next) {
     try {
-        return new Promise((resolve, reject) => {
-            db.getUsers((error, users) => {
-                if (error) {
-                    reject(error)
-                }
-                resolve(users)
-            });
-        })
-    } catch (err) {
-        next(err);
+        return await DatabaseUtil.executeDatabaseOperation(db.getUsers);
+    } catch (error) {
+        next(error);
     }
-
 }
 
 async function getByUserId(req, next) {
     const id = req.params.id;
     try {
-        return new Promise((resolve, reject) => {
-            db.getUserById(id, (error, users) => {
-                if (error) {
-                    reject(error)
-                }
-                resolve(users)
-            });
-        })
-
-    } catch (err) {
-        next(err);
+        return await DatabaseUtil.executeDatabaseOperation(db.getUserById, id);
+    } catch (error) {
+        next(error);
     }
 }
 
 async function createUser(req, next) {
-    const body = req.body
+    const body = req.body;
     try {
-        return new Promise((resolve, reject) => {
-            db.createUser(body, (error, users) => {
-                if (error) {
-                    reject(error)
-                }
-                resolve(users)
-            });
-        })
-    } catch (err) {
-        next(err);
+        return await DatabaseUtil.executeDatabaseOperation(db.createUser, body);
+    } catch (error) {
+        next(error);
     }
 }
 
 async function updateUser(req, next) {
     const id = req.params.id;
-    const body = req.body
+    const body = req.body;
     try {
-        return new Promise((resolve, reject) => {
-            db.updateUser(id, body, (error, users) => {
-                if (error) {
-                    reject(error)
-                }
-                resolve(users)
-            });
-        })
-    } catch (err) {
-        next(err);
+        return await DatabaseUtil.executeDatabaseOperation(db.updateUser, id, body);
+    } catch (error) {
+        next(error);
     }
 }
 
 async function deleteUserById(req, next) {
     const id = req.params.id;
     try {
-        return new Promise((resolve, reject) => {
-            db.deleteUser(id, (error, users) => {
-                if (error) {
-                    reject(error)
-                }
-                resolve(users)
-            });
-        })
-
-    } catch (err) {
-        next(err);
+        return await DatabaseUtil.executeDatabaseOperation(db.deleteUser, id);
+    } catch (error) {
+        next(error);
     }
 }
 

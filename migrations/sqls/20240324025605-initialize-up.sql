@@ -1,7 +1,6 @@
 -- Table: public.Users
 
 CREATE SEQUENCE users_id_seq;
-
 CREATE TABLE public."users"
 (
     id bigint DEFAULT nextval('users_id_seq'::regclass) PRIMARY KEY,

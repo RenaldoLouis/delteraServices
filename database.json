@@ -4,7 +4,7 @@
         "user": "renaldolouis",
         "password": "password",
         "host": "localhost",
-        "database": "delterademo",
+        "database": "delterrademo",
         "port": "5432"
     }
 }
