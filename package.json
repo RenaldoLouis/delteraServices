@@ -14,6 +14,7 @@
     "db-migrate": "^0.11.14",
     "db-migrate-pg": "^1.5.2",
     "express": "^4.19.1",
+    "express-validator": "^7.0.1",
     "pg": "^8.11.3"
   }
 }

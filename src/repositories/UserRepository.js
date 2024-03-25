@@ -1,7 +1,6 @@
-const dbConfig = require('../configs/db.config');
-const { getCreateUserResponseDTO } = require('../models/userDTO');
-const Pool = require('pg').Pool
-const pool = new Pool(dbConfig)
+const dbConfig = require('../configs/DbConfig');
+const { getCreateUserResponseDTO } = require('../models/UserModel');
+const pool = require('../configs/DbConfig')
 
 const getUsers = (callback) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {

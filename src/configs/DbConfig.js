@@ -1,5 +1,7 @@
 const env = process.env;
 const fs = require('fs');
+const Pool = require('pg').Pool
+
 // const db = {
 //   host: env.DB_HOST,
 //   user: env.DB_USER,
@@ -19,4 +21,6 @@ const db = {
   port: 5432,
 };
 
-module.exports = db;
+const pool = new Pool(db)
+
+module.exports = pool;

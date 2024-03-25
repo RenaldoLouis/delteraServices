@@ -1,9 +1,13 @@
-const { user } = require('../configs/db.config.js');
-const db = require('../services/queries')
-const helper = require('../utils/helper.js');
+const { user } = require('../configs/DbConfig.js');
+const db = require('../repositories/UserRepository.js')
+const helper = require('../utils/DataUtil.js');
+const { validationResult } = require('express-validator');
 
 async function get(req, res, next) {
     try {
+
+        const errorValidation = validationResult(req);
+
         db.getUsers((error, users) => {
             if (error) {
                 return next(error);
@@ -86,5 +90,5 @@ module.exports = {
     getById,
     create,
     update,
-    remove
+    remove,
 };
