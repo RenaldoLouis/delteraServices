@@ -1,6 +1,7 @@
 const env = process.env;
 const fs = require('fs');
 const Pool = require('pg').Pool
+require('dotenv').config()
 
 // const db = {
 //   host: env.DB_HOST,
@@ -14,11 +15,11 @@ const Pool = require('pg').Pool
 //   }
 // };
 const db = {
-  user: 'renaldolouis',
-  host: 'localhost',
-  database: 'delterrademo',
-  password: 'password',
-  port: 5432,
+  // user: 'renaldolouis',
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.PORT,
 };
 
 const pool = new Pool(db)
