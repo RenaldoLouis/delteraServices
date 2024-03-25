@@ -40,14 +40,14 @@ const updateUser = (id, userData, callback) => {
     const { name, email } = userData
 
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING id',
+        'UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING id,name,email',
         [name, email, id],
         (error, results) => {
             if (error) {
                 return callback(error);
             }
             if (results.rowCount === 1 && results.rows[0].id) {
-                return callback(null, { id: results.rows[0].id });
+                return callback(null, getCreateUserResponseDTO(results.rows[0]));
             } else {
                 return callback(new Error('Failed to update user'));
             }
